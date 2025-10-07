@@ -1,0 +1,29 @@
+﻿@model List<Tuan6.Models.SanPham>
+
+@if (ViewBag.Keyword != null)
+{
+    <h2>Kết quả tìm kiếm cho: "@ViewBag.Keyword"</h2>
+}
+else
+{
+    <h2>Sản phẩm</h2>
+}
+
+<div class="product-list" style="display: flex; flex-wrap: wrap;">
+    @if (Model.Count == 0)
+    {
+        <p>Không tìm thấy sản phẩm nào.</p>
+    }
+    else
+    {
+        foreach (var sp in Model)
+        {
+            <div class="product-card" style="border: 1px solid #ccc; margin: 10px; padding: 10px; width: 200px;">
+                <img src="~/Images/@sp.Hinh" alt="@sp.TenSP" style="width: 100%;" />
+                <h4>@sp.TenSP</h4>
+                <p>Giá: @string.Format("{0:N0}", sp.GiaBan) VNĐ</p>
+                <a href="/Product/Details/@sp.MaSanPham" class="btn btn-primary">Chi tiết</a>
+            </div>
+        }
+    }
+</div>

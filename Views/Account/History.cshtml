@@ -1,0 +1,26 @@
+﻿@model List<Tuan6.Models.DonHangViewModel>
+<h2>Lịch sử mua hàng</h2>
+@if (!Model.Any())
+{
+    <p>Bạn chưa có đơn hàng nào.</p>
+}
+else
+{
+    foreach (var donhang in Model)
+    {
+        <div class="order" style="border: 1px solid #000; margin-bottom: 20px; padding: 15px;">
+            <h4>Đơn hàng #@donhang.MaHoaDon - Ngày: @donhang.NgayTao.ToString("dd/MM/yyyy")</h4>
+            <table border="1" style="width:100%; border-collapse: collapse;">
+                <tr><th>Sản phẩm</th><th>Số lượng</th><th>Đơn giá</th></tr>
+                @foreach (var chitiet in donhang.ChiTiet)
+                {
+                    <tr>
+                        <td>@chitiet.TenSP</td>
+                        <td>@chitiet.SoLuong</td>
+                        <td>@string.Format("{0:N0}", chitiet.GiaBan) VNĐ</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    }
+}

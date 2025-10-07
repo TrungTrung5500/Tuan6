@@ -1,0 +1,10 @@
+﻿@model Tuan6.Models.SanPham
+
+<h2>Chi tiết sản phẩm</h2>
+<div>
+    <img src="~/Images/@Model.Hinh" alt="@Model.TenSP" style="max-width: 300px;" />
+    <h3>@Model.TenSP</h3>
+    <p><strong>Giá:</strong> @string.Format("{0:N0}", Model.GiaBan) VNĐ</p>
+    <p><strong>Giới thiệu:</strong> @Model.GhiChu</p>
+</div>
+<a href="javascript:history.back()">Quay lại</a>
